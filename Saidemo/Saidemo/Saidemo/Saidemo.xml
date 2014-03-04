@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cc:System xmlns:cc="http://cloudconductor.org/namespaces/cc">
+  <cc:Name>Sai_0305</cc:Name>
+  <cc:Description>test1</cc:Description>
+  <cc:Author>cloudconductor-demouser</cc:Author>
+  <cc:Date>2014-03-05</cc:Date>
+  <cc:License>test1</cc:License>
+  <cc:Infrastructures>
+    <cc:Infrastructure id="infrastructure_1">
+      <cc:Name>Sai-Cloud</cc:Name>
+    </cc:Infrastructure>
+  </cc:Infrastructures>
+  <cc:Machines>
+    <cc:Machine id="monitor_1">
+      <cc:Name>Monitor 1</cc:Name>
+      <cc:SpecType>small</cc:SpecType>
+      <cc:OSType>Windows</cc:OSType>
+      <cc:OSVersion>7 pro</cc:OSVersion>
+      <cc:NetworkInterfaces>
+        <cc:NetworkInterface ref="network_group_1" />
+      </cc:NetworkInterfaces>
+      <cc:MachineFilters>
+        <cc:MachineFilter ref="Sai_0305" />
+      </cc:MachineFilters>
+    </cc:Machine>
+  </cc:Machines>
+  <cc:MachineGroups>
+    <cc:MachineGroup id="monitor_group_1" ref="monitor_1">
+      <cc:Name>Monitor Group 1</cc:Name>
+      <cc:Infrastructures>
+        <cc:Infrastructure ref="infrastructure_1" />
+      </cc:Infrastructures>
+      <cc:Roles>
+        <cc:Role ref="zabbix_dns_role" />
+      </cc:Roles>
+      <cc:FloatingIP ref="eip_monitor" />
+      <cc:NodeType>
+        <cc:Single />
+      </cc:NodeType>
+    </cc:MachineGroup>
+  </cc:MachineGroups>
+  <cc:Middlewares>
+    <cc:Middleware type="chef" id="zabbix_cookbook">
+      <cc:Name>Zabbix</cc:Name>
+      <cc:Repository>https://github.com/cloudconductor-dev/cookbooks.git</cc:Repository>
+      <cc:CookbookName>cc-zabbix</cc:CookbookName>
+    </cc:Middleware>
+    <cc:Middleware type="chef" id="bind_cookbook">
+      <cc:Name>Bind 9</cc:Name>
+      <cc:Repository>https://github.com/cloudconductor-dev/cookbooks.git</cc:Repository>
+      <cc:CookbookName>cc-bind</cc:CookbookName>
+    </cc:Middleware>
+    <cc:Middleware type="chef" id="deploy_cookbook">
+      <cc:Name>Deploy</cc:Name>
+      <cc:Repository>https://github.com/cloudconductor-dev/cookbooks.git</cc:Repository>
+      <cc:CookbookName>cc-deploy</cc:CookbookName>
+    </cc:Middleware>
+    <cc:Middleware type="chef" id="nsupdate_cookbook">
+      <cc:Name>NSUpdate</cc:Name>
+      <cc:Repository>https://github.com/cloudconductor-dev/cookbooks.git</cc:Repository>
+      <cc:CookbookName>cc-nsupdate</cc:CookbookName>
+    </cc:Middleware>
+  </cc:Middlewares>
+  <cc:Roles>
+    <cc:Role type="chef" id="zabbix_dns_role">
+      <cc:Name>Monitoring Server Role</cc:Name>
+      <cc:Middlewares>
+        <cc:Middleware ref="zabbix_cookbook" />
+        <cc:Middleware ref="bind_cookbook" />
+        <cc:Middleware ref="deploy_cookbook" />
+        <cc:Middleware ref="nsupdate_cookbook" />
+      </cc:Middlewares>
+      <cc:Import type="chef_runlist">https://raw.github.com/cloudconductor-dev/chef-parameters/master/chef_runlist_zabbix.json</cc:Import>
+      <cc:Import type="chef_attribute">https://raw.github.com/cloudconductor-dev/chef-parameters/master/chef_attr_zabbix.json</cc:Import>
+    </cc:Role>
+  </cc:Roles>
+  <cc:MachineFilters>
+    <cc:MachineFilter id="Sai_0305">
+      <cc:Protocol>tcp</cc:Protocol>
+      <cc:Port>80</cc:Port>
+      <cc:Direction>ingress</cc:Direction>
+      <cc:Source ref="network_group_1" />
+      <cc:RuleAction>allow</cc:RuleAction>
+    </cc:MachineFilter>
+  </cc:MachineFilters>
+  <cc:Networks>
+    <cc:Network id="network_1">
+      <cc:Name>Network 1</cc:Name>
+    </cc:Network>
+  </cc:Networks>
+  <cc:NetworkGroups>
+    <cc:NetworkGroup id="network_group_1">
+      <cc:Name>Network Group 1</cc:Name>
+      <cc:Networks>
+        <cc:Network ref="network_1">
+          <cc:Infrastructures>
+            <cc:Infrastructure ref="infrastructure_1" />
+          </cc:Infrastructures>
+        </cc:Network>
+      </cc:Networks>
+      <cc:NetworkFilters />
+    </cc:NetworkGroup>
+  </cc:NetworkGroups>
+  <cc:FloatingIPs>
+    <cc:FloatingIP id="eip_monitor">
+      <cc:Name>eip_monitor</cc:Name>
+    </cc:FloatingIP>
+  </cc:FloatingIPs>
+</cc:System>
