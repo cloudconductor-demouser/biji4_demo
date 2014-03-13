@@ -2,35 +2,35 @@
 <ccm:Editor xmlns:ccm="http://cloudconductor.org/namespaces/ccm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ccm:Nodes>
     <ccm:Node id="infrastructure_2" xsi:type="ccm:Infrastructure">
-      <ccm:x>133.5</ccm:x>
+      <ccm:x>123.5</ccm:x>
       <ccm:y>35.5</ccm:y>
       <ccm:z>0</ccm:z>
-      <ccm:width>670</ccm:width>
+      <ccm:width>680</ccm:width>
       <ccm:height>190</ccm:height>
     </ccm:Node>
     <ccm:Node id="network_3" xsi:type="ccm:Network">
-      <ccm:x>160.5</ccm:x>
+      <ccm:x>150.5</ccm:x>
       <ccm:y>85.5</ccm:y>
       <ccm:z>1</ccm:z>
       <ccm:children>4</ccm:children>
     </ccm:Node>
     <ccm:Node id="machine_1" xsi:type="ccm:Machine">
-      <ccm:x>181.5</ccm:x>
+      <ccm:x>171.5</ccm:x>
       <ccm:y>122.5</ccm:y>
       <ccm:z>4</ccm:z>
     </ccm:Node>
     <ccm:Node id="machine_3" xsi:type="ccm:Machine">
-      <ccm:x>481.5</ccm:x>
+      <ccm:x>471.5</ccm:x>
       <ccm:y>122.5</ccm:y>
       <ccm:z>4</ccm:z>
     </ccm:Node>
     <ccm:Node id="machine_38" xsi:type="ccm:Machine">
-      <ccm:x>331.5</ccm:x>
+      <ccm:x>321.5</ccm:x>
       <ccm:y>122.5</ccm:y>
       <ccm:z>5</ccm:z>
     </ccm:Node>
     <ccm:Node id="machine_4" xsi:type="ccm:Machine">
-      <ccm:x>631.5</ccm:x>
+      <ccm:x>621.5</ccm:x>
       <ccm:y>122.5</ccm:y>
       <ccm:z>8</ccm:z>
     </ccm:Node>
@@ -38,34 +38,34 @@
   <ccm:Links>
     <ccm:Link>
       <ccm:Source ref="network_3">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(1)    </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(1)</ccm:Selector>
       </ccm:Source>
       <ccm:Target ref="machine_1">
-        <ccm:Selector>g:nth-child(1) g:nth-child(2)   </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(2)</ccm:Selector>
       </ccm:Target>
     </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="network_3">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(2)    </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(2)</ccm:Selector>
       </ccm:Source>
       <ccm:Target ref="machine_38">
-        <ccm:Selector>g:nth-child(1) g:nth-child(2)   </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(2)</ccm:Selector>
       </ccm:Target>
     </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="machine_3">
-        <ccm:Selector>g:nth-child(1) g:nth-child(2)   </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(2)</ccm:Selector>
       </ccm:Source>
       <ccm:Target ref="network_3">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(3)    </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(3)</ccm:Selector>
       </ccm:Target>
     </ccm:Link>
     <ccm:Link>
       <ccm:Source ref="network_3">
-        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(4)    </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(3) circle:nth-child(4)</ccm:Selector>
       </ccm:Source>
       <ccm:Target ref="machine_4">
-        <ccm:Selector>g:nth-child(1) g:nth-child(2)   </ccm:Selector>
+        <ccm:Selector>g:nth-child(1) g:nth-child(2)</ccm:Selector>
       </ccm:Target>
     </ccm:Link>
   </ccm:Links>
